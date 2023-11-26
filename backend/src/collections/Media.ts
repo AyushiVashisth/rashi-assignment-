@@ -22,14 +22,14 @@ const Media: CollectionConfig = {
       name: "type",
       label: "Type",
       type: "select",
-      options: ["Image", "Video", "Short V"],
+      options: ["Image", "Video", "vedioShort"],
       required: true
     }
   ],
   upload: {
     staticDir: path.resolve(
       __dirname,
-      "../../uploads"
+      "../../../frontend/uploads"
     )
   }
 };

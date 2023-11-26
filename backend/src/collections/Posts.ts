@@ -23,7 +23,7 @@ const Posts: CollectionConfig = {
       options: [
         { label: "Image", value: "image" },
         { label: "Video", value: "video" },
-        { label: "Short Video", value: "short" }
+        { label: "vedioShort", value: "vedioShort" }
       ],
       required: true
     },

@@ -29,7 +29,7 @@ const start = async () => {
         collection: Posts.slug,
         depth: 2,
         where: {
-          type: { equals: "image" }
+          type: { equals: "vedioShort" }
         }
       });
 
@@ -50,7 +50,7 @@ const start = async () => {
     }
   });
 
-  app.listen(8080);
+  app.listen(1111);
 };
 
 start();
