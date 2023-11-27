@@ -29,7 +29,7 @@ const start = async () => {
         collection: Posts.slug,
         depth: 2,
         where: {
-          type: { equals: "vedioShort" }
+          type: { equals: "short_video" }
         }
       });
 

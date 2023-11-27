@@ -1,4 +1,3 @@
-// src/collections/Posts.ts
 import { CollectionConfig } from "payload/types";
 
 const Posts: CollectionConfig = {
@@ -7,34 +6,40 @@ const Posts: CollectionConfig = {
     create: () => true,
     read: () => true,
     update: () => true,
-    delete: () => true
+    delete: () => true,
   },
   fields: [
     {
       name: "title",
       label: "Title",
       type: "text",
-      required: true
+      required: true,
+    },
+    {
+      name: "content",
+      label: "Content",
+      type: "richText",
+      required: true,
     },
     {
       name: "type",
       label: "Type",
       type: "select",
       options: [
-        { label: "Image", value: "image" },
-        { label: "Video", value: "video" },
-        { label: "vedioShort", value: "vedioShort" }
+        { label: "Short Video", value: "short_video" },
+        { label: "video", value: "video" },
+        { label: "image", value: "image" },
       ],
-      required: true
+      required: true,
     },
     {
       name: "media",
       label: "Media",
       type: "relationship",
       relationTo: "media",
-      hasMany: true
-    }
-  ]
+      hasMany: true,
+    },
+  ],
 };
 
 export default Posts;

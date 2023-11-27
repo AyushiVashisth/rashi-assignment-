@@ -6,12 +6,9 @@ const App = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   useEffect(() => {
-    // Fetch video data from your API endpoint if needed
     const fetchVideos = async () => {
       try {
-        const response = await fetch(
-          "https://payload-api.onrender.com/posts/videos/stream"
-        );
+        const response = await fetch("http://localhost:1111/posts/videos/stream");
         const data = await response.json();
         setVideos(data.docs);
       } catch (error) {
@@ -49,7 +46,14 @@ const App = () => {
         <div>
           <VideoPlayer
             key={currentVideoIndex}
-            videoUrl={`/static/media/${videos[currentVideoIndex].media[0].filename}`}
+            url={`/static/media/${videos[currentVideoIndex].media[0].filename.replace(
+              /\.mp4$/,
+              `.${getReplacementValue(videos[currentVideoIndex].media[0].filename)}.mp4`
+            )}`}
+            width="100%"
+            height="auto"
+            controls
+            playing
           />
 
           <div className="mt-4">
@@ -70,6 +74,16 @@ const App = () => {
       )}
     </div>
   );
+};
+
+const getReplacementValue = (filename) => {
+  const replacements = {
+    "pexels-mikhail-nilov-6981411 (1080p).mp4": "4494d7bc38401086a92e",
+    "pexels-peter-fowler-6394054 (Original).mp4": "419555a97ac6b659e560",
+    "video (2160p).mp4": "2355c1882edae85c80a3",
+  };
+
+  return replacements[filename] || "";
 };
 
 export default App;

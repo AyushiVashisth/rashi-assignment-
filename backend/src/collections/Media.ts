@@ -1,4 +1,3 @@
-// src/collections/Media.ts
 import { CollectionConfig } from "payload/types";
 import path from "path";
 
@@ -8,30 +7,35 @@ const Media: CollectionConfig = {
     create: () => true,
     read: () => true,
     update: () => true,
-    delete: () => true
+    delete: () => true,
   },
   fields: [
+    {
+      name: "type",
+      label: "Media Type",
+      type: "select",
+      options: ["Image", "Video", "Short Video"],
+      required: true,
+    },
+    {
+      name: "caption",
+      label: "Caption",
+      type: "text",
+    },
     {
       name: "posts",
       label: "Posts",
       type: "relationship",
       relationTo: "posts",
-      hasMany: true
+      hasMany: true,
     },
-    {
-      name: "type",
-      label: "Type",
-      type: "select",
-      options: ["Image", "Video", "vedioShort"],
-      required: true
-    }
   ],
   upload: {
     staticDir: path.resolve(
       __dirname,
-      "../../../frontend/uploads"
-    )
-  }
+      "../../../frontend/src/static/media"
+    ),
+  },
 };
 
 export default Media;
